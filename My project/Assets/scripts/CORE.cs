@@ -6,7 +6,6 @@ public class CORE : MonoBehaviour
 {
     public Transform enemyPrefab;
     public Transform spawnPoint;
-    private Vector3 direction;
 
     private static List<GameObject> theRooms = new List<GameObject>();
 
@@ -19,42 +18,23 @@ public class CORE : MonoBehaviour
     public static void display()
     {
         print("Woot");
-        //push test
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        direction = new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f));
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 100; i++)
         {
-            print(Random.Range(1, 20));
+      
+            Transform t = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+            Rigidbody rb = t.GetComponent<Rigidbody>();
+            rb.velocity = new Vector3(Random.Range(10, 30), Random.Range(0, 20), Random.Range(10, 30));
         }
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += direction * 5 * Time.deltaTime;
+        
     }
 }
